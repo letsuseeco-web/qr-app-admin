@@ -40,15 +40,29 @@ export default function UserDetail() {
 
     setUser({
       ...res.user,
+
+      // 🔥 FIXED: medical mapping
+      gender: res.user.gender || res.medical?.gender || null,
+      date_of_birth:
+        res.user.date_of_birth || res.medical?.date_of_birth || null,
+
+      blood_group: res.medical?.blood_group || null,
+      conditions: res.medical?.conditions || null,
+      allergies: res.medical?.allergies || null,
+
+      // existing logic (unchanged)
       referral_code:
         res.user.referral_code || res.user.referralCode || "-",
+
       referred_by_name:
         res.user.referred_by_name ||
         res.user.referredByName ||
         res.user.referred_by ||
         "-",
+
       plan: res.user.plan || "FREE",
       plan_end_date: res.user.plan_end_date || null,
+
       balance: res.wallet?.balance || 0,
       qrs: res.qr_codes || [],
       contacts: res.contacts || [],
