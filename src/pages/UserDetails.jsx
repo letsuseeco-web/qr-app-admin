@@ -38,21 +38,18 @@ export default function UserDetail() {
   const loadUser = async () => {
     const res = await getUserDetails(userId);
 
-    // 🔥 SAFE MEDICAL FALLBACK (NEW)
-    const medical =
-      res.medical ||
-      res.medical_records ||
-      res.user?.medical ||
-      {};
+    // 🔥 CORRECT DATA SOURCES
+    const profile = res.profile || {};
+    const medical = res.medical || {};
 
     setUser({
       ...res.user,
 
-      // 🔥 UPDATED (NO BREAKING)
-      gender: res.user.gender || medical.gender || null,
-      date_of_birth:
-        res.user.date_of_birth || medical.date_of_birth || null,
+      // ✅ PROFILE DATA
+      gender: profile.gender || null,
+      date_of_birth: profile.date_of_birth || null,
 
+      // ✅ MEDICAL DATA
       blood_group: medical.blood_group || null,
       conditions: medical.conditions || null,
       allergies: medical.allergies || null,
