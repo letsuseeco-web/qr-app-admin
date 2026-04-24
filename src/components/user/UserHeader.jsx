@@ -6,20 +6,13 @@ export default function UserHeader({ user }) {
 
   return (
     <div className="bg-white p-5 rounded-xl shadow-sm flex justify-between items-start">
-
-      {/* LEFT */}
       <div>
+        <h1 className="text-2xl font-bold">{user.name}</h1>
 
-        {/* NAME */}
-        <h1 className="text-2xl font-bold">
-          {user.name}
-        </h1>
-
-        {/* DETAILS */}
         <div className="mt-2 text-sm text-gray-600 space-y-1">
-
           <p>
-            Mobile: <span className="font-medium"></span><></>{user.phone}</p>
+            Mobile: <span className="font-medium">{user.phone}</span>
+          </p>
 
           <p>
             Code: <span className="font-medium">{user.user_code}</span>
@@ -32,8 +25,8 @@ export default function UserHeader({ user }) {
           <p>
             DOB:{" "}
             <span className="font-medium">
-              {user.dob
-                ? new Date(user.dob).toLocaleDateString("en-GB")
+              {user.date_of_birth
+                ? new Date(user.date_of_birth).toLocaleDateString("en-GB")
                 : "-"}
             </span>
           </p>
@@ -44,15 +37,10 @@ export default function UserHeader({ user }) {
               {new Date(user.created_at).toLocaleDateString("en-GB")}
             </span>
           </p>
-
         </div>
-
       </div>
 
-      {/* RIGHT */}
       <div className="flex flex-col items-end gap-2">
-
-        {/* STATUS */}
         <span
           className={`px-3 py-1 rounded-full text-sm ${
             user.status === "blocked"
@@ -63,13 +51,10 @@ export default function UserHeader({ user }) {
           {user.status === "blocked" ? "Blocked" : "Active"}
         </span>
 
-        {/* BACK */}
         <Button size="sm" onClick={() => navigate(-1)}>
           Back
         </Button>
-
       </div>
-
     </div>
   );
 }
