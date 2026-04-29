@@ -1,5 +1,5 @@
 import { QRCodeCanvas } from "qrcode.react";
-import { APP_CONFIG } from "@/config/appConfig";
+import { APP_CONFIG } from "/config/appConfig";
 
 export default function StickerPreview({ design = {}, qrCode = "DEMO123" }) {
   return (
