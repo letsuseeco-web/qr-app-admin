@@ -1,4 +1,5 @@
 import { QRCodeCanvas } from "qrcode.react";
+import { APP_CONFIG } from "@/config/appConfig";
 
 export default function StickerPreview({ design = {}, qrCode = "DEMO123" }) {
   return (
@@ -46,7 +47,10 @@ export default function StickerPreview({ design = {}, qrCode = "DEMO123" }) {
         {/* QR SIDE */}
         <div className="w-1/3 bg-white flex flex-col items-center justify-center">
 
-          <QRCodeCanvas value={qrCode} size={80} />
+          <QRCodeCanvas
+            value={`${APP_CONFIG.scanBaseUrl}/scan/${qrCode}`}
+            size={80}
+          />
 
           <div className="text-xs font-bold mt-2">
             ID: {qrCode}

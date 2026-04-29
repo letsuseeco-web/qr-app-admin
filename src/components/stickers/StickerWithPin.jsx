@@ -1,4 +1,5 @@
 import { QRCodeCanvas } from "qrcode.react";
+import { APP_CONFIG } from "@/config/appConfig";
 
 export default function StickerWithPin({ design, qrCode, pin }) {
   return (
@@ -97,7 +98,7 @@ export default function StickerWithPin({ design, qrCode, pin }) {
               justifyContent: "center",
             }}
           >
-            <QRCodeCanvas value={qrCode} size={70} />
+            <QRCodeCanvas value={`${APP_CONFIG.scanBaseUrl}/scan/${qrCode}`} size={70}/>
 
             <div
               style={{
