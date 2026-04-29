@@ -1,5 +1,5 @@
 import { QRCodeCanvas } from "qrcode.react";
-import { APP_CONFIG } from "@/config/appConfig";
+import { APP_CONFIG } from "/config/appConfig";
 
 export default function StickerWithPin({ design, qrCode, pin }) {
   return (
